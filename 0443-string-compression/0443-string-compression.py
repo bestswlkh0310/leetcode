@@ -6,7 +6,6 @@ class Solution(object):
         """
         before = ""
         for i in range(len(chars) - 1):
-            print(str(type(chars[i])) == "<type 'unicode'>")
             if before != chars[i] and str(type(chars[i])) == "<type 'unicode'>":
                 before = chars[i]
             if chars[i] == chars[i + 1]:
