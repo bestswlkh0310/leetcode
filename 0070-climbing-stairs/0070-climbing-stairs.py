@@ -15,8 +15,6 @@ class Solution(object):
         for i in range(1, n):
             for j in range(n):
                 arr[i + 1][j + 1] = arr[i][j] + arr[i][j + 1]
-        for i in arr:
-            print(i)
         j = 0
         for i in range(n + 1, 0, -1):
             cnt += arr[i - 1][i - j - 1]
@@ -24,6 +22,4 @@ class Solution(object):
             if i - j < 0:
                 break
             
-        for i in arr:
-            print(i)
         return cnt
