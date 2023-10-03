@@ -13,30 +13,24 @@
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        vector<int> v;
+        if (head == nullptr) return nullptr;
+        
+        vector<ListNode*> v;
         ListNode* before = head;
         while (before != nullptr) {
-            v.push_back(before -> val);
+            v.push_back(before);
             before = before -> next;
         }
         
-        if (head == nullptr) return nullptr;
-        
         int k1 = k % v.size();
         
-        rotate(v.begin(), v.end() - k1, v.end());
+        if (k1 == 0 or v.size() == 1) return head;
         
-        for (int i: v) {
-            std::cout << i << std::endl;
-        }
+        v.back() -> next = head;
         
-        ListNode* headNode = new ListNode(v[0]);
-        ListNode* beforeNode = headNode;
-        for (int i = 1; i < v.size(); i++) {
-            ListNode* newNode = new ListNode(v[i]);
-            beforeNode -> next = newNode;
-            beforeNode = newNode;
-        }
+        ListNode* headNode = v[v.size() - k1];
+        
+        v[v.size() - k1 - 1] -> next = nullptr;
         
         return headNode;
     }
